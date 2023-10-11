@@ -1,9 +1,27 @@
+//here we specify the interface for one todo
+interface Todo{
+id:number;
+name:string;
+completed:false;
+}
 //here we specify the interface of state
 interface ITheme{
-    theme:"dark"|"light"
+    todos:Todo[]
 }
 //here specify the type of the actions ("type and payload")
-interface ChangeThemeAction {
+interface AddTodoAction {
+    type:  "CHANGE_THEME";
+    payload: "dark"| "light"
+}
+interface GetTodoAction {
+    type:  "CHANGE_THEME";
+    payload: "dark"| "light"
+}
+interface EditTodoAction {
+    type:  "CHANGE_THEME";
+    payload: "dark"| "light"
+}
+interface DeleteTodoAction {
     type:  "CHANGE_THEME";
     payload: "dark"| "light"
 }
@@ -16,10 +34,10 @@ const initialState:ITheme={
     theme:"dark"
 }
 
-const themeReducer = (state:ITheme = initialState, action:Actions) => {
+const todosReducer = (state:ITheme = initialState, action:Actions) => {
     switch (action.type) {
         case "CHANGE_THEME": return {...state,theme:action.payload};
         default: return state;
     }
 }
-export default themeReducer;
+export default todosReducer;

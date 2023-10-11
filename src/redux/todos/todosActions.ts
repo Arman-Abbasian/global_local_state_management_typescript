@@ -16,10 +16,10 @@ const initialState:ITheme={
     theme:"dark"
 }
 
-const themeReducer = (state:ITheme = initialState, action:Actions) => {
+const change = (state:ITheme = initialState, action:Actions) => {
     switch (action.type) {
         case "CHANGE_THEME": return {...state,theme:action.payload};
         default: return state;
     }
 }
-export default themeReducer;
+export default change;
