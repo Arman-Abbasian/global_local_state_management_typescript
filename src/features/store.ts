@@ -1,5 +1,11 @@
-import { createStore } from 'redux';
-import rootReducer from "./rootReducer";
+import { configureStore } from "@reduxjs/toolkit";
+import themeSlice from "./theme/themeReducer";
+import todosSlice from "./todos/todosReducer";
 
-const store = createStore(rootReducer);
-export default store;  
+
+const store = configureStore({
+    reducer:{
+        theme:themeSlice,
+        todos:todosSlice
+    }
+});

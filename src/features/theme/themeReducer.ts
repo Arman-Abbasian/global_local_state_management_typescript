@@ -21,4 +21,6 @@ const themeSlice = createSlice({
       changeTheme: (state:ITheme, action:PayloadAction<Theme>) => {state.theme = action.payload},
     },
   })
-  export default themeSlice;
+  export default themeSlice.reducer;
+
+  export const {changeTheme}= themeSlice.actions;
