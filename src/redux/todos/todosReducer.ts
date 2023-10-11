@@ -1,42 +1,64 @@
 //here we specify the interface for one todo
-interface Todo{
+export interface Todo{
 id:number;
 name:string;
 completed:false;
 }
 //here we specify the interface of state
-interface ITheme{
+interface ITodo{
     todos:Todo[]
 }
 //here specify the type of the actions ("type and payload")
 interface AddTodoAction {
-    type:  "CHANGE_THEME";
-    payload: "dark"| "light"
-}
-interface GetTodoAction {
-    type:  "CHANGE_THEME";
-    payload: "dark"| "light"
+    type:  "ADD_TODO";
+    payload: Todo
 }
 interface EditTodoAction {
-    type:  "CHANGE_THEME";
-    payload: "dark"| "light"
+    type:  "EDIT_TODO";
+    payload: Todo
 }
 interface DeleteTodoAction {
-    type:  "CHANGE_THEME";
-    payload: "dark"| "light"
+    type:  "DELETE_TODO";
+    payload: number
 }
+//GET_TODO in sync Actions in not meaningfull(we are not have that)
 //here combine all the actions in a interface(give this type to the action parameter in reducer)
-type Actions=ChangeThemeAction;
+type Actions=AddTodoAction|EditTodoAction|DeleteTodoAction;
 
 
 //----------------------------------------------------------
-const initialState:ITheme={
-    theme:"dark"
+const initialState:ITodo={
+    todos:[]
 }
 
-const todosReducer = (state:ITheme = initialState, action:Actions) => {
+const todosReducer = (state:ITodo = initialState, action:Actions) => {
     switch (action.type) {
-        case "CHANGE_THEME": return {...state,theme:action.payload};
+        //ADD_TODO Action
+        case "ADD_TODO": {
+            const {todos}={...state};
+            todos.push(action.payload);
+            const newTodos:Todo[]=todos;
+            return {...state,todos:newTodos}
+        }
+        //GET_TODO in sync Actions in not meaningful(we are not have that)
+        //EDIT_TODO Action
+        case "EDIT_TODO": {
+            const {todos}={...state};
+            const findedTodo:Todo | undefined=todos.find((todo:Todo)=>todo.id===action.payload.id);
+            if(findedTodo){
+            findedTodo.completed=action.payload.completed
+            findedTodo.name=action.payload.name
+            }
+            return {...state,todos}
+        
+    }
+        //DELETE_TODO Action
+        case "DELETE_TODO": {
+            const {todos}={...state};
+            const filteredTodos:Todo[]=todos.filter((todo:Todo)=>todo.id!==action.payload);
+            return {...state,todos:filteredTodos}
+        }
+   
         default: return state;
     }
 }

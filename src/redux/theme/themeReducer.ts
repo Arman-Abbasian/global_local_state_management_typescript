@@ -1,6 +1,7 @@
+export type Theme="dark"|"light"
 //here we specify the interface of state
-interface ITheme{
-    theme:"dark"|"light"
+export interface ITheme{
+    theme:Theme
 }
 //here specify the type of the actions ("type and payload")
 interface ChangeThemeAction {
