@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer ,useContext} from "react";
 
 //*? the type section----------------------------------
 interface ChildrenProps {
@@ -66,17 +66,18 @@ const reducer=(state:ITodo=initialState,action:Actions)=>{
     }
 }
 ///*? the context section----------------------------------
-const TodosContext = createContext<{todos: ITodo;dispatch: React.Dispatch<Actions>;}>
+const TodosContext = createContext<{todos: ITodo;todosDispatch: React.Dispatch<Actions>;}>
 ({
     todos: initialState,
-    dispatch: () => null
+    todosDispatch: () => null
   });
 const TodosContextProvider=({children}:ChildrenProps)=>{
-    const [todos,dispatch]=useReducer(reducer,initialState);
+    const [todos,todosDispatch]=useReducer(reducer,initialState);
     return(
-        <TodosContext.Provider value={{todos,dispatch}}>
+        <TodosContext.Provider value={{todos,todosDispatch}}>
           {children}
         </TodosContext.Provider>
     )
 }
 export default TodosContextProvider;
+export const useTodos=()=>useContext(TodosContext)

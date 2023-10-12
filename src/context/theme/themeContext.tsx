@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer,useContext } from "react";
 
 type Theme="dark"|"light";
 
@@ -28,17 +28,18 @@ const reducer=(state:ITheme=initialState,action:Actions)=>{
     }
 }
 //----------------------------------------------------------------------
-const ThemeContext = createContext<{theme: ITheme;dispatch: React.Dispatch<Actions>;}>
+const ThemeContext = createContext<{theme: ITheme;themeDispatch: React.Dispatch<Actions>;}>
 ({
     theme: initialState,
-    dispatch: () => null
+    themeDispatch: () => null
   });
 const ThemeContextProvider=({children}:ChildrenProps)=>{
-    const [theme,dispatch]=useReducer(reducer,initialState);
+    const [theme,themeDispatch]=useReducer(reducer,initialState);
     return(
-        <ThemeContext.Provider value={{theme,dispatch}}>
+        <ThemeContext.Provider value={{theme,themeDispatch}}>
           {children}
         </ThemeContext.Provider>
     )
 }
 export default ThemeContextProvider;
+export const useTheme=()=>useContext(ThemeContext)

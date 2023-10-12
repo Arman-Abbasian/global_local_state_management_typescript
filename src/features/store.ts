@@ -9,3 +9,4 @@ const store = configureStore({
         todos:todosSlice
     }
 });
+export default store;
