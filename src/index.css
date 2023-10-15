@@ -33,6 +33,7 @@ body{
 .width{
   width: 50%;
 }
+/* Todo component */
 .todoContainer{
   display: flex;
   justify-content: space-between;
@@ -55,4 +56,13 @@ gap: 1rem;
 }
 .todoContainer_icons_delete{
   color: red;
+}
+/* Todos component */
+.todosContainer{
+display: flex;
+flex-direction: column;
+gap: 1rem;
+margin-top: 3rem;
+transition: all;
+transition-duration: 10s;
 }
