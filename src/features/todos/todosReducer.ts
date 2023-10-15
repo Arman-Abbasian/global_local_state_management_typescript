@@ -4,7 +4,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 export interface Todo{
     id:number;
     name:string;
-    completed:false;
+    completed:boolean;
     }
     //here we specify the interface of state
     interface ITodo{
@@ -31,6 +31,12 @@ const todosSlice = createSlice({
             findedTodo.name=action.payload.name
             }
       },
+      completeTodo: (state:ITodo, action:PayloadAction<number>) => {
+        const findedTodo:Todo | undefined=state.todos.find((todo:Todo)=>todo.id===action.payload);
+            if(findedTodo){
+            findedTodo.completed=!findedTodo.completed
+            }
+      },
       deleteTodo: (state:ITodo, action:PayloadAction<number>) => {
         state.todos=state.todos.filter((todo:Todo)=>todo.id!==action.payload);
       },
@@ -38,4 +44,4 @@ const todosSlice = createSlice({
     
   })
   export default todosSlice.reducer;
-  export const {addTodo,deleteTodo,editTodo}= todosSlice.actions;
+  export const {addTodo,deleteTodo,editTodo,completeTodo}= todosSlice.actions;

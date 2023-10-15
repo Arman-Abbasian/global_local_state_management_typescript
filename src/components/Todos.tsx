@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../features/hook"
-import { Todo, deleteTodo } from "../features/todos/todosReducer"
+import { Todo, completeTodo, deleteTodo } from "../features/todos/todosReducer"
 import ModalC from "./ModalC";
 import Todoo from "./Todoo"
 import {useState} from "react"
@@ -15,12 +15,16 @@ const editHandler=(id:number)=>{
   setIsOpen(!isOpen)
   console.log(id)
 }
+const completedHandler=(id:number)=>{
+dispatch(completeTodo(id))
+}
   return (
     <div className="todosContainer">
       {todos.map((todo:Todo)=>(
         <Todoo key={todo.id} todo={todo} 
         deleteHandler={deleteHandler}
-        editHandler={editHandler} />
+        editHandler={editHandler}
+        completedHandler={completedHandler} />
       ))}
       <ModalC open={isOpen} handleClose={()=>setIsOpen(false)}/>
     </div>
