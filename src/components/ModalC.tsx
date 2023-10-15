@@ -3,7 +3,7 @@ import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import CheckBox from './CheckBox';
 import { useState } from 'react';
-import { Todo, completeTodo, editTodo } from '../features/todos/todosReducer';
+import { Todo, editTodo } from '../features/todos/todosReducer';
 import { useAppDispatch } from '../features/hook';
 
 const style = {
@@ -23,14 +23,15 @@ interface IProps{
   handleClose:()=>void,
   setIsOpen:React.Dispatch<React.SetStateAction<boolean>>
 }
-function ModalC({open,handleClose,todo,setIsOpen}:IProps) {
-  const [name,setName]=useState(todo.name)
-  const [completed,setCompleted]=useState(todo.completed)
+function ModalC({open,handleClose,setIsOpen,todo}:IProps) {
+  const [name,setName]=useState<string>(todo.name)
+  const [completed,setCompleted]=useState<boolean>(todo.completed)
   const submitHandler=(e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
     dispatch(editTodo({id:todo.id,name,completed}))
     setIsOpen(false)
   }
+  console.log(open)
   const dispatch=useAppDispatch();
   return (
     <div>
@@ -42,7 +43,7 @@ function ModalC({open,handleClose,todo,setIsOpen}:IProps) {
         aria-describedby="keep-mounted-modal-description"
       >
         <Box sx={style}>
-          <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
+          <Typography id="keep-mounted-modal-title" variant="h6" component="span">
             Edit Todo
           </Typography>
           <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>

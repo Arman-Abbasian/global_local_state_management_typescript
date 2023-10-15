@@ -6,28 +6,30 @@ import {useState} from "react"
 
 function Todos() {
   const [isOpen,setIsOpen]=useState<boolean>(false)
+  const [selectedTodo,setSelectedTodo]=useState<Todo|null>(null)
   const {todos}=useAppSelector((state)=>state.todos)
   const dispatch=useAppDispatch();
 const deleteHandler=(id:number)=>{
   dispatch(deleteTodo(id))
 }
-const editHandler=(id:number)=>{
+const editHandler=(todo:Todo)=>{
   setIsOpen(!isOpen)
-  console.log(id)
+  setSelectedTodo(todo)
 }
 const completedHandler=(id:number)=>{
 dispatch(completeTodo(id))
 }
   return (
     <div className="todosContainer">
+        {selectedTodo && 
+        <ModalC setIsOpen={setIsOpen}  open={isOpen} handleClose={()=>setIsOpen(false)} todo={selectedTodo}/>
+        }
+      
       {todos.map((todo:Todo)=>(
-        <>
-        <ModalC setIsOpen={setIsOpen} todo={todo} open={isOpen} handleClose={()=>setIsOpen(false)}/>
         <Todoo key={todo.id} todo={todo} 
         deleteHandler={deleteHandler}
-        editHandler={editHandler}
+        editHandler={()=>editHandler(todo)}
         completedHandler={completedHandler} />
-        </>
       ))}
     </div>
   )

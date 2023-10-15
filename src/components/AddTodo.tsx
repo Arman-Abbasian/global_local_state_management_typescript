@@ -1,19 +1,17 @@
 import { useState } from "react";
 import { addTodo } from "../features/todos/todosReducer";
-import { useAppDispatch, useAppSelector } from "../features/hook";
+import { useAppDispatch } from "../features/hook";
 
 
 function AddTodo() {
   const [name,setName]=useState<string>("")
 const dispatch=useAppDispatch();
-const state=useAppSelector((state)=>state)
 const submitHandler=(e:React.FormEvent<HTMLFormElement>)=>{
   if(!name) return;
   e.preventDefault();
   dispatch(addTodo({id:Date.now(),completed:false,name}))
   setName("")
 }
-console.log(state)
   return (
     <div>
       <form className="formContainer" onSubmit={submitHandler}>
