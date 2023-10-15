@@ -33,3 +33,26 @@ body{
 .width{
   width: 50%;
 }
+.todoContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border:1px solid seagreen;
+  border-radius: 0.3rem;
+  padding: 0.5rem 1rem;
+}
+.todoContainer_title{
+flex-grow: 1;
+}
+.todoContainer_icons{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 1rem;
+}
+.todoContainer_icons_edit{
+  color: blue;
+}
+.todoContainer_icons_delete{
+  color: red;
+}
