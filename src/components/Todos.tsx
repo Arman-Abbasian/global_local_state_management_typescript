@@ -21,12 +21,14 @@ dispatch(completeTodo(id))
   return (
     <div className="todosContainer">
       {todos.map((todo:Todo)=>(
+        <>
+        <ModalC setIsOpen={setIsOpen} todo={todo} open={isOpen} handleClose={()=>setIsOpen(false)}/>
         <Todoo key={todo.id} todo={todo} 
         deleteHandler={deleteHandler}
         editHandler={editHandler}
         completedHandler={completedHandler} />
+        </>
       ))}
-      <ModalC open={isOpen} handleClose={()=>setIsOpen(false)}/>
     </div>
   )
 }
