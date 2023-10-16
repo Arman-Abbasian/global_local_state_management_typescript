@@ -8,13 +8,14 @@ function Todos() {
   const [isOpen,setIsOpen]=useState<boolean>(false)
   const [selectedTodo,setSelectedTodo]=useState<Todo|null>(null)
   const {todos}=useAppSelector((state)=>state.todos)
-  console.log(todos)
   const dispatch=useAppDispatch();
+
+  
 const deleteHandler=(id:number)=>{
   dispatch(deleteTodo(id))
 }
 const editHandler=(todo:Todo)=>{
-  setIsOpen(!isOpen)
+  setIsOpen(true)
   setSelectedTodo(todo)
 }
 const completedHandler=(id:number)=>{
@@ -23,7 +24,7 @@ dispatch(completeTodo(id))
   return (
     <div className="todosContainer">
         {selectedTodo && 
-        <ModalC setIsOpen={setIsOpen}  open={isOpen}  todo={selectedTodo}/>
+        <ModalC setIsOpen={setIsOpen}  open={isOpen}  todo={selectedTodo} setSelectedTodo={setSelectedTodo}/>
         }
       
       {todos.map((todo:Todo)=>(

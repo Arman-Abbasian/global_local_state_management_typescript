@@ -78,11 +78,18 @@ transition-duration: 10s;
   justify-content: center;
   align-items: center;
 }
-.modalMain{
+.modalContent{
   background-color: white;
   width: 600px;
   border-radius: 5px;
+  padding: 1rem;
 }
 .closeModal{
   display: none;
+}
+
+.spaceBetween{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
 }
