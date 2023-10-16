@@ -23,7 +23,11 @@ const todosSlice = createSlice({
     name: 'todos',
     initialState,
     reducers: {
-      addTodo: (state:ITodo, action:PayloadAction<Todo>) => { state.todos.push(action.payload)},
+      addTodo: (state:ITodo, action:PayloadAction<Todo>) => { 
+        state.todos.push(action.payload)
+        console.log(action.payload)
+        console.log(state.todos)
+      },
       editTodo: (state:ITodo, action:PayloadAction<Todo>) => {
         const findedTodo:Todo | undefined=state.todos.find((todo:Todo)=>todo.id===action.payload.id);
             if(findedTodo){

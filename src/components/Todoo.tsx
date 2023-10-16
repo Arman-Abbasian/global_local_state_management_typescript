@@ -1,5 +1,5 @@
 import { AiOutlineEdit,AiOutlineDelete } from "react-icons/ai";
-import { Todo } from "../features/todos/todosReducer";
+import { Todo } from "../features/todos/todosSlice";
 import CheckBox from "./CheckBox";
 
 interface IProps{

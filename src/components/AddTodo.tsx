@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { addTodo } from "../features/todos/todosReducer";
-import { useAppDispatch } from "../features/hook";
+import { addTodo } from "../features/todos/todosSlice";
+import { useAppDispatch, useAppSelector } from "../features/hook";
 
 
 function AddTodo() {
   const [name,setName]=useState<string>("")
 const dispatch=useAppDispatch();
+const todos=useAppSelector(state=>state.todos);
 const submitHandler=(e:React.FormEvent<HTMLFormElement>)=>{
   if(!name) return;
   e.preventDefault();
   dispatch(addTodo({id:Date.now(),completed:false,name}))
+  console.log(todos)
   setName("")
 }
   return (
