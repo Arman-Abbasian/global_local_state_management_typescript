@@ -12,6 +12,12 @@ export const editTodo=(todo:Todo)=>{
         payload: todo
     }
 }
+export const completeTodo=(id:number)=>{
+    return {
+        type:"EDIT_TODO",
+        payload: id
+    }
+}
 export const deleteTodo=(id:number)=>{
     return {
         type:"DELETE_TODO",

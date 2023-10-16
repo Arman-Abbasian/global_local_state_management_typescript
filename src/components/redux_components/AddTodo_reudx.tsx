@@ -1,16 +1,20 @@
 import { useState } from "react";
-import { addTodo } from "../../features/todos/todosSlice";
-import { useAppDispatch, useAppSelector } from "../../features/hook";
+import { useAppSelector } from "../../redux/hook";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../../redux/todos/todosActions";
 
 
 function AddTodo() {
   const [name,setName]=useState<string>("")
-const dispatch=useAppDispatch();
+const dispatch=useDispatch();
+const state=useAppSelector(state=>state.todos);
+console.log(state)
 const todos=useAppSelector(state=>state.todos);
 const submitHandler=(e:React.FormEvent<HTMLFormElement>)=>{
   if(!name) return;
   e.preventDefault();
-  dispatch(addTodo({id:Date.now(),completed:false,name}))
+  dispatch(addTodo({id:Date.now(),name,completed:false}))
+  //dispatch(addTodo({id:Date.now(),completed:false,name}))
   console.log(todos)
   setName("")
 }
