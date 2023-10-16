@@ -1,7 +1,7 @@
-import AddTodo from "./components/AddTodo"
+import AddTodo from "./components/redux_toolkit_components/AddTodo_reudxToolkit"
 import {Provider} from "react-redux"
 import store from "./features/store"
-import Todos from "./components/Todos"
+import Todos from "./components/redux_toolkit_components/Todos_reudxToolkit"
 
 
 

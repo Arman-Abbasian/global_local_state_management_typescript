@@ -1,6 +1,6 @@
 import { AiOutlineEdit,AiOutlineDelete } from "react-icons/ai";
-import { Todo } from "../features/todos/todosSlice";
-import CheckBox from "./CheckBox";
+import { Todo } from "../../features/todos/todosSlice";
+import CheckBox from "./CheckBox_reudx";
 
 interface IProps{
   todo:Todo;

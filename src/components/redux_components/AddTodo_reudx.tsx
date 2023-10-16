@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { addTodo } from "../features/todos/todosSlice";
-import { useAppDispatch, useAppSelector } from "../features/hook";
+import { addTodo } from "../../features/todos/todosSlice";
+import { useAppDispatch, useAppSelector } from "../../features/hook";
 
 
 function AddTodo() {

@@ -1,7 +1,7 @@
-import CheckBox from './CheckBox';
+import CheckBox from './CheckBox_reudxToolkit';
 import { useState} from 'react';
-import { Todo, editTodo } from '../features/todos/todosSlice';
-import { useAppDispatch } from '../features/hook';
+import { Todo, editTodo } from '../../features/todos/todosSlice';
+import { useAppDispatch } from '../../features/hook';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
 interface IProps{

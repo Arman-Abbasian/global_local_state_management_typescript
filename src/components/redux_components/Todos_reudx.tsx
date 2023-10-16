@@ -1,7 +1,7 @@
-import { useAppDispatch, useAppSelector } from "../features/hook"
-import { Todo, completeTodo, deleteTodo } from "../features/todos/todosSlice"
-import ModalC from "./ModalC";
-import Todoo from "./Todoo"
+import { useAppDispatch, useAppSelector } from "../../features/hook"
+import { Todo, completeTodo, deleteTodo } from "../../features/todos/todosSlice"
+import ModalC from "./ModalC_reudx";
+import Todoo from "./Todoo_reudx"
 import {useState} from "react"
 
 function Todos() {
