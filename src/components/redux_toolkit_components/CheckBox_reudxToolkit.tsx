@@ -7,7 +7,7 @@ interface IProps{
   completedHandler:()=>void
 }
 
- function CheckBox({completed,completedHandler}:IProps) {
+ function CheckBox_redux_toolkit({completed,completedHandler}:IProps) {
   return (
     <div>
       <Checkbox
@@ -23,4 +23,4 @@ interface IProps{
     </div>
   );
 }
-export default CheckBox;
+export default CheckBox_redux_toolkit;

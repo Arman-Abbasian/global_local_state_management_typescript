@@ -3,7 +3,7 @@ import { addTodo } from "../../features/todos/todosSlice";
 import { useAppDispatch, useAppSelector } from "../../features/hook";
 
 
-function AddTodo() {
+function AddTodo_redux_toolkit() {
   const [name,setName]=useState<string>("")
 const dispatch=useAppDispatch();
 const todos=useAppSelector(state=>state.todos);
@@ -29,4 +29,4 @@ const submitHandler=(e:React.FormEvent<HTMLFormElement>)=>{
   )
 }
 
-export default AddTodo
+export default AddTodo_redux_toolkit

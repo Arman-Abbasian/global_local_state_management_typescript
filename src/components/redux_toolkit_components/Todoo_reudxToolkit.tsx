@@ -9,7 +9,7 @@ interface IProps{
   completedHandler:(id:number)=>void;
 }
 
-function Todoo({todo,deleteHandler,editHandler,completedHandler}:IProps) {
+function Todoo_redux_toolkit({todo,deleteHandler,editHandler,completedHandler}:IProps) {
   return (
     <div className="todoContainer">
       <div className="todoContainer_title">
@@ -24,4 +24,4 @@ function Todoo({todo,deleteHandler,editHandler,completedHandler}:IProps) {
   )
 }
 
-export default Todoo;
+export default Todoo_redux_toolkit;

@@ -4,7 +4,7 @@ import ModalC from "./ModalC_reudxToolkit";
 import Todoo from "./Todoo_reudxToolkit"
 import {useState} from "react"
 
-function Todos() {
+function Todos_redux_toolkit() {
   const [isOpen,setIsOpen]=useState<boolean>(false)
   const [selectedTodo,setSelectedTodo]=useState<Todo|null>(null)
   const {todos}=useAppSelector((state)=>state.todos)
@@ -37,4 +37,4 @@ dispatch(completeTodo(id))
   )
 }
 
-export default Todos
+export default Todos_redux_toolkit
