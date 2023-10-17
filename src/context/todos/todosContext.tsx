@@ -8,7 +8,7 @@ interface ChildrenProps {
 export interface Todo{
     id:number;
     name:string;
-    completed:false;
+    completed:boolean;
     }
     //here we specify the interface of state
     interface ITodo{
@@ -23,13 +23,17 @@ export interface Todo{
         type:  "EDIT_TODO";
         payload: Todo
     }
+    interface CompleteTodoAction {
+        type:  "COMPLETE_TODO";
+        payload: number
+    }
     interface DeleteTodoAction {
         type:  "DELETE_TODO";
         payload: number
     }
     //GET_TODO in sync Actions in not meaningfull(we are not have that)
     //here combine all the actions in a interface(give this type to the action parameter in reducer)
-    type Actions=AddTodoAction|EditTodoAction|DeleteTodoAction;
+    type Actions=AddTodoAction|EditTodoAction|CompleteTodoAction|DeleteTodoAction;
 
 
 ///*? the reducer section----------------------------------
@@ -51,6 +55,15 @@ const reducer=(state:ITodo=initialState,action:Actions)=>{
             if(findedTodo){
             findedTodo.completed=action.payload.completed
             findedTodo.name=action.payload.name
+            }
+            return {...state,todos}
+            break;
+            }
+            case "COMPLETE_TODO":{
+            const {todos}={...state};
+            const findedTodo:Todo | undefined=todos.find((todo:Todo)=>todo.id===action.payload);
+            if(findedTodo){
+            findedTodo.completed=!findedTodo.completed
             }
             return {...state,todos}
             break;
