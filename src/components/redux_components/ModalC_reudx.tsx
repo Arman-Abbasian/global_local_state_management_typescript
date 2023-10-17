@@ -12,7 +12,7 @@ interface IProps{
   setIsOpen:React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function ModalC({open,setIsOpen,todo,setSelectedTodo}:IProps) {
+function ModalC_reudx({open,setIsOpen,todo,setSelectedTodo}:IProps) {
   const [name,setName]=useState<string>(todo.name)
   const [completed,setCompleted]=useState<boolean>(todo.completed)
 
@@ -51,4 +51,4 @@ function ModalC({open,setIsOpen,todo,setSelectedTodo}:IProps) {
       </div>
   );
 }
-export default ModalC;
+export default ModalC_reudx;

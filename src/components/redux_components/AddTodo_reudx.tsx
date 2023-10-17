@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { addTodo } from "../../redux/todos/todosActions";
 
 
-function AddTodo() {
+function AddTodo_redux() {
   const [name,setName]=useState<string>("")
 const dispatch=useDispatch();
 const state=useAppSelector(state=>state.todos);
@@ -33,4 +33,4 @@ const submitHandler=(e:React.FormEvent<HTMLFormElement>)=>{
   )
 }
 
-export default AddTodo
+export default AddTodo_redux

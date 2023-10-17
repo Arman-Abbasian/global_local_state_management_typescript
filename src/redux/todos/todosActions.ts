@@ -14,7 +14,7 @@ export const editTodo=(todo:Todo)=>{
 }
 export const completeTodo=(id:number)=>{
     return {
-        type:"EDIT_TODO",
+        type:"COMPLETE_TODO",
         payload: id
     }
 }

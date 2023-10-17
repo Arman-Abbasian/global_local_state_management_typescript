@@ -6,12 +6,12 @@ import Todoo from "./Todoo_reudx"
 import {useState} from "react"
 import { Todo } from "../../redux/todos/todosReducer";
 
-function Todos() {
+function Todos_reudx() {
   const [isOpen,setIsOpen]=useState<boolean>(false)
   const [selectedTodo,setSelectedTodo]=useState<Todo|null>(null)
   const {todos}=useAppSelector((state)=>state.todos)
   const dispatch=useDispatch();
-
+console.log(todos)
   
 const deleteHandler=(id:number)=>{
   dispatch(deleteTodo(id))
@@ -39,4 +39,4 @@ dispatch(completeTodo(id))
   )
 }
 
-export default Todos
+export default Todos_reudx

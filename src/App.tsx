@@ -1,7 +1,8 @@
-import AddTodo from "./components/redux_toolkit_components/AddTodo_reudxToolkit"
 import {Provider} from "react-redux"
-import store from "./features/store"
-import Todos from "./components/redux_toolkit_components/Todos_reudxToolkit"
+import store from "./redux/store"
+import AddTodo_redux from "./components/redux_components/AddTodo_reudx"
+import Todos_reudx from "./components/redux_components/Todos_reudx"
+
 
 
 
@@ -9,8 +10,8 @@ function App() {
 
   return (
    <Provider store={store}>
-        <AddTodo />
-        <Todos />
+        <AddTodo_redux />
+        <Todos_reudx />
         </Provider>
       
   )
