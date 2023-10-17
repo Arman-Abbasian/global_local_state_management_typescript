@@ -1,14 +1,16 @@
-import { useAppDispatch, useAppSelector } from "../../features/hook"
-import { Todo, completeTodo, deleteTodo } from "../../features/todos/todosSlice"
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "../../redux/hook"
+import { completeTodo, deleteTodo } from "../../redux/todos/todosActions"
 import ModalC from "./ModalC_reudx";
 import Todoo from "./Todoo_reudx"
 import {useState} from "react"
+import { Todo } from "../../redux/todos/todosReducer";
 
 function Todos() {
   const [isOpen,setIsOpen]=useState<boolean>(false)
   const [selectedTodo,setSelectedTodo]=useState<Todo|null>(null)
   const {todos}=useAppSelector((state)=>state.todos)
-  const dispatch=useAppDispatch();
+  const dispatch=useDispatch();
 
   
 const deleteHandler=(id:number)=>{

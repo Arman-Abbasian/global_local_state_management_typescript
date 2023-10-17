@@ -1,14 +1,14 @@
 import CheckBox from './CheckBox_reudx';
 import { useState} from 'react';
-import { Todo, editTodo } from '../../features/todos/todosSlice';
+import { editTodo } from '../../redux/todos/todosActions';
 import { useAppDispatch } from '../../features/hook';
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { Todo } from '../../redux/todos/todosReducer';
 
 interface IProps{
   todo:Todo,
   open:boolean,
   setSelectedTodo:React.Dispatch<React.SetStateAction<Todo | null>>
-
   setIsOpen:React.Dispatch<React.SetStateAction<boolean>>
 }
 
