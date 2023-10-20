@@ -93,3 +93,11 @@ transition-duration: 10s;
   justify-content: space-between;
   align-items: center;
 }
+.lightTheme{
+  background-color:  white;
+  color: rgb(1, 39, 39);
+}
+.darkTheme{
+  background-color: rgb(1, 39, 39);
+  color: white;
+}

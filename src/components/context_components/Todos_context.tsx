@@ -1,35 +1,31 @@
-import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../redux/hook"
-import { completeTodo, deleteTodo } from "../../redux/todos/todosActions"
-import ModalC from "./ModalC_context";
 import Todoo from "./Todoo_context"
 import {useState} from "react"
 import { Todo } from "../../redux/todos/todosReducer";
+import { useTodos } from "../../context/todos/todosContext";
+import ModalC_context from "./ModalC_context";
 
 function Todos_context() {
   const [isOpen,setIsOpen]=useState<boolean>(false)
   const [selectedTodo,setSelectedTodo]=useState<Todo|null>(null)
-  const {todos}=useAppSelector((state)=>state.todos)
-  const dispatch=useDispatch();
-console.log(todos)
+  const {todos,todosDispatch}=useTodos()
   
 const deleteHandler=(id:number)=>{
-  dispatch(deleteTodo(id))
+  todosDispatch({type:"DELETE_TODO",payload:id})
 }
 const editHandler=(todo:Todo)=>{
   setIsOpen(true)
   setSelectedTodo(todo)
 }
 const completedHandler=(id:number)=>{
-dispatch(completeTodo(id))
+  todosDispatch({type:"COMPLETE_TODO",payload:id})
 }
   return (
     <div className="todosContainer">
         {selectedTodo && 
-        <ModalC setIsOpen={setIsOpen}  open={isOpen}  todo={selectedTodo} setSelectedTodo={setSelectedTodo}/>
+        <ModalC_context setIsOpen={setIsOpen}  open={isOpen}  todo={selectedTodo} setSelectedTodo={setSelectedTodo}/>
         }
       
-      {todos.map((todo:Todo)=>(
+      {todos.todos.map((todo:Todo)=>(
         <Todoo key={todo.id} todo={todo} 
         deleteHandler={deleteHandler}
         editHandler={()=>editHandler(todo)}

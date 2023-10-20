@@ -1,16 +1,18 @@
-import AddTodo_redux from "./components/redux_components/AddTodo_reudx"
-import Todos_reudx from "./components/redux_components/Todos_reudx"
+import AddTodo_context from "./components/context_components/AddTodo_context"
+import Todos_context from "./components/context_components/Todos_context"
+import ThemeContextProvider from "./context/theme/themeContext"
 import TodosContextProvider from "./context/todos/todosContext"
 
 
 
 
 function App() {
-
   return (      
         <TodosContextProvider>
-            <AddTodo_redux />
-            <Todos_reudx />
+          <ThemeContextProvider>
+            <AddTodo_context />
+            <Todos_context />
+            </ThemeContextProvider>
         </TodosContextProvider>
       
   )

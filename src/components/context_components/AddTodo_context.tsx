@@ -1,25 +1,40 @@
 import { useState } from "react";
-import { useAppSelector } from "../../redux/hook";
-import { useDispatch } from "react-redux";
-import { addTodo } from "../../redux/todos/todosActions";
+import { useTodos } from "../../context/todos/todosContext";
+import { useTheme } from "../../context/theme/themeContext";
+import { changeTheme } from "../../features/theme/themeSlice";
+import { MdOutlineDarkMode,MdOutlineLightMode } from "react-icons/md";
 
 
 function AddTodo_context() {
-  const [name,setName]=useState<string>("")
-const dispatch=useDispatch();
-const state=useAppSelector(state=>state.todos);
-console.log(state)
-const todos=useAppSelector(state=>state.todos);
+  const [name,setName]=useState<string>("");
+  const {todosDispatch}=useTodos();
+  const {theme,themeDispatch}=useTheme();
+  console.log(theme)
+  if(theme.theme==="dark"){
+    document.body.classList.remove('lightTheme')
+    document.body.classList.add('darkTheme')
+  }else {
+    document.body.classList.remove('darkTheme')
+    document.body.classList.add('lightTheme')
+  }
+
 const submitHandler=(e:React.FormEvent<HTMLFormElement>)=>{
-  if(!name) return;
   e.preventDefault();
-  dispatch(addTodo({id:Date.now(),name,completed:false}))
-  //dispatch(addTodo({id:Date.now(),completed:false,name}))
-  console.log(todos)
+  if(!name) return;
+  todosDispatch({type:"ADD_TODO",payload:{id:Date.now(),name,completed:false}})
   setName("")
+}
+const changeThemeHandler=()=>{
+  if(theme.theme==="dark"){
+    themeDispatch({type:"CHANGE_THEME",payload:"light"})
+  }else{
+    themeDispatch({type:"CHANGE_THEME",payload:"dark"})
+  }
 }
   return (
     <div>
+      <div onClick={changeThemeHandler}>{theme.theme==="dark"?
+      <MdOutlineLightMode/>:<MdOutlineDarkMode/>}</div>
       <form className="formContainer" onSubmit={submitHandler}>
         <div className="width">
         <label className="blockLabel" htmlFor="title">title</label>

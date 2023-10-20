@@ -1,9 +1,8 @@
 import CheckBox from './CheckBox_context';
 import { useState} from 'react';
-import { editTodo } from '../../redux/todos/todosActions';
-import { useAppDispatch } from '../../features/hook';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Todo } from '../../redux/todos/todosReducer';
+import { useTodos } from '../../context/todos/todosContext';
 
 interface IProps{
   todo:Todo,
@@ -15,11 +14,10 @@ interface IProps{
 function ModalC_context({open,setIsOpen,todo,setSelectedTodo}:IProps) {
   const [name,setName]=useState<string>(todo.name)
   const [completed,setCompleted]=useState<boolean>(todo.completed)
-
-  
+  const {todosDispatch}=useTodos();
   const submitHandler=(e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
-    dispatch(editTodo({id:todo.id,name,completed}))
+    todosDispatch({type:"EDIT_TODO",payload:{id:todo.id,name,completed}})
     setIsOpen(false)
     setSelectedTodo(null)
   }
@@ -27,7 +25,6 @@ function ModalC_context({open,setIsOpen,todo,setSelectedTodo}:IProps) {
     setSelectedTodo(null)
     setIsOpen(false)
   }
-  const dispatch=useAppDispatch();
   return (
       <div className={`modalContainer ${!open && 'closeModal' }`}>
         <div className='modalContent'>
@@ -46,7 +43,6 @@ function ModalC_context({open,setIsOpen,todo,setSelectedTodo}:IProps) {
               <CheckBox completed={completed} completedHandler={()=>setCompleted(!completed)} />
               <button type="submit"  className="button width">Edit</button>
             </form>
-
         </div>
       </div>
   );

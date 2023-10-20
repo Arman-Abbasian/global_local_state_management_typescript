@@ -43,12 +43,15 @@ todos:[]
 const reducer=(state:ITodo=initialState,action:Actions)=>{
     switch (action.type) {
         case "ADD_TODO":{
-            const {todos}={...state};
-            todos.push(action.payload);
-            const newTodos:Todo[]=todos;
-            return {...state,todos:newTodos}
-        }
+            //const todos=[...state.todos];
+            //console.log(todos)
+            //console.log(action.payload)
+            // todos.push(action.payload);
+            //console.log(todos)
+            console.log(state)
+            return state
             break;
+        }
             case "EDIT_TODO":{
                 const {todos}={...state};
             const findedTodo:Todo | undefined=todos.find((todo:Todo)=>todo.id===action.payload.id);

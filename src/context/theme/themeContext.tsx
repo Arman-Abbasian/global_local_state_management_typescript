@@ -6,7 +6,7 @@ interface ITheme{
     theme:Theme
 }
 interface ChangeTheme{
-    type:"changeTheme",
+    type:"CHANGE_THEME",
     payload:Theme
 }
 
@@ -20,7 +20,7 @@ type Actions=ChangeTheme;
 //------------------------------------------------------------------
 const reducer=(state:ITheme=initialState,action:Actions)=>{
     switch (action.type) {
-        case "changeTheme":
+        case "CHANGE_THEME":
             return {...state,theme:action.payload}
             break;
         default:
