@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useTodos } from "../../context/todos/todosContext";
 import { useTheme } from "../../context/theme/themeContext";
-import { changeTheme } from "../../features/theme/themeSlice";
 import { MdOutlineDarkMode,MdOutlineLightMode } from "react-icons/md";
 
 
@@ -33,8 +32,8 @@ const changeThemeHandler=()=>{
 }
   return (
     <div>
-      <div onClick={changeThemeHandler}>{theme.theme==="dark"?
-      <MdOutlineLightMode/>:<MdOutlineDarkMode/>}</div>
+      <div className="theme" onClick={changeThemeHandler}>{theme.theme==="dark"?
+      <MdOutlineLightMode className="icon"/>:<MdOutlineDarkMode className="icon"/>}</div>
       <form className="formContainer" onSubmit={submitHandler}>
         <div className="width">
         <label className="blockLabel" htmlFor="title">title</label>

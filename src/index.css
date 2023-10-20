@@ -6,6 +6,10 @@
 body{
   padding: 1rem;
 }
+.icon{
+  width: 25px;
+  height: 25px;
+}
 .blockLabel{
   display: block;
   margin-bottom: 5px;
@@ -100,4 +104,7 @@ transition-duration: 10s;
 .darkTheme{
   background-color: rgb(1, 39, 39);
   color: white;
+}
+.theme:hover{
+  cursor: pointer;
 }
