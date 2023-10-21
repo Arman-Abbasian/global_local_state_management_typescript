@@ -15,7 +15,7 @@ interface IProps{
 function ModalC_reudx({open,setIsOpen,todo,setSelectedTodo}:IProps) {
   const [name,setName]=useState<string>(todo.name)
   const [completed,setCompleted]=useState<boolean>(todo.completed)
-const {theme}=useAppSelector((state)=>state)
+  const {theme}=useAppSelector((state)=>state)
   const submitHandler=(e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
     dispatch(editTodo({id:todo.id,name,completed}))
@@ -44,7 +44,7 @@ const {theme}=useAppSelector((state)=>state)
               <input className="inputDesign" type="text" value={name} 
               onChange={(e)=>setName(e.target.value)} id="title" />
               </div>
-              <CheckBox number={0} completed={completed} completedHandler={()=>setCompleted(!completed)} />
+              <CheckBox open={false} completed={completed} completedHandler={()=>setCompleted(!completed)} />
               <button type="submit"  className="button width">Edit</button>
             </form>
             </div>

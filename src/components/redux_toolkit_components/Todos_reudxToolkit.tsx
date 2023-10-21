@@ -24,11 +24,12 @@ dispatch(completeTodo(id))
   return (
     <div className="todosContainer">
         {selectedTodo && 
-        <ModalC setIsOpen={setIsOpen}  open={isOpen}  todo={selectedTodo} setSelectedTodo={setSelectedTodo}/>
+        <ModalC  setIsOpen={setIsOpen}  open={isOpen}  todo={selectedTodo} setSelectedTodo={setSelectedTodo}/>
         }
       
       {todos.map((todo:Todo)=>(
         <Todoo key={todo.id} todo={todo} 
+        open={isOpen}
         deleteHandler={deleteHandler}
         editHandler={()=>editHandler(todo)}
         completedHandler={completedHandler} />

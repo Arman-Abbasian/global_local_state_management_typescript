@@ -1,7 +1,8 @@
 import { Provider } from "react-redux"    
-import store from "./redux/store"
-import AddTodo_redux from "./components/redux_components/AddTodo_reudx"
-import Todos_reudx from "./components/redux_components/Todos_reudx"
+import store from "./features/store"
+import AddTodo_redux_toolkit from "./components/redux_toolkit_components/AddTodo_reudxToolkit"
+import Todos_redux_toolkit from "./components/redux_toolkit_components/Todos_reudxToolkit"
+
 
 
 
@@ -14,9 +15,13 @@ function App() {
         //     <Todos_context />
         //     </ThemeContextProvider>
         // </TodosContextProvider>
+        // <Provider store={store}>
+        //   <AddTodo_redux />
+        //   <Todos_reudx />
+        // </Provider>
         <Provider store={store}>
-          <AddTodo_redux />
-          <Todos_reudx />
+          <AddTodo_redux_toolkit/>
+          <Todos_redux_toolkit/>
         </Provider>
       
   )
