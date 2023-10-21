@@ -1,7 +1,7 @@
-import { Provider } from "react-redux"
-import Todos_context from "./components/context_components/Todos_context"
+import { Provider } from "react-redux"    
 import store from "./redux/store"
 import AddTodo_redux from "./components/redux_components/AddTodo_reudx"
+import Todos_reudx from "./components/redux_components/Todos_reudx"
 
 
 
@@ -16,7 +16,7 @@ function App() {
         // </TodosContextProvider>
         <Provider store={store}>
           <AddTodo_redux />
-          <Todos_context />
+          <Todos_reudx />
         </Provider>
       
   )

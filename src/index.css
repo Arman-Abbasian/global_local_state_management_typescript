@@ -33,6 +33,7 @@ body{
    align-items:center; 
    flex-direction:column;
    gap:20px;
+   margin-top: 10px;
 }
 .button{
   display: block;
@@ -86,10 +87,14 @@ transition-duration: 10s;
   align-items: center;
 }
 .modalContent{
-  background-color: white;
-  width: 600px;
+  width: 80%;
+  max-width: 600px;
   border-radius: 5px;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:flex-start;
 }
 .closeModal{
   display: none;
@@ -99,6 +104,7 @@ transition-duration: 10s;
   display:flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 .lightTheme{
   background-color:  white;

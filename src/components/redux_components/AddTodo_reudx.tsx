@@ -10,7 +10,6 @@ function AddTodo_redux() {
 const [name,setName]=useState<string>("")
 const {theme}=useAppSelector(state=>state);
 const dispatch=useDispatch();
-console.log(theme)
   if(theme.theme==="dark"){
     document.body.classList.remove('lightTheme')
     document.body.classList.add('darkTheme')

@@ -41,8 +41,8 @@ const todosReducer = (state:ITodo = initialState, action:Actions) => {
         case "ADD_TODO": {
             const {todos}={...state};
             todos.push(action.payload);
-            const newTodos:Todo[]=todos;
-            return {...state,todos:newTodos}
+            console.log({...state,todos})
+            return {...state,todos}
         }
         //GET_TODO in sync Actions in not meaningful(we are not have that)
         //EDIT_TODO Action

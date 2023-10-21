@@ -1,7 +1,7 @@
 import CheckBox from './CheckBox_reudx';
 import { useState} from 'react';
 import { editTodo } from '../../redux/todos/todosActions';
-import { useAppDispatch } from '../../features/hook';
+import { useAppDispatch, useAppSelector } from '../../features/hook';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Todo } from '../../redux/todos/todosReducer';
 
@@ -15,8 +15,7 @@ interface IProps{
 function ModalC_reudx({open,setIsOpen,todo,setSelectedTodo}:IProps) {
   const [name,setName]=useState<string>(todo.name)
   const [completed,setCompleted]=useState<boolean>(todo.completed)
-
-  
+const {theme}=useAppSelector((state)=>state)
   const submitHandler=(e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
     dispatch(editTodo({id:todo.id,name,completed}))
@@ -30,24 +29,25 @@ function ModalC_reudx({open,setIsOpen,todo,setSelectedTodo}:IProps) {
   const dispatch=useAppDispatch();
   return (
       <div className={`modalContainer ${!open && 'closeModal' }`}>
-        <div className='modalContent'>
+        <div className={`modalContent ${theme.theme==="dark"?'darkTheme':'lightTheme'}`}>
+        
             <div className='spaceBetween'>
-            <h2 style={{textAlign:"center"}}>Edit Todo</h2>
+            <h2>Edit Todo</h2>
             <AiOutlineCloseCircle 
+            className="icon"
             onClick={closeHandler} 
             style={{color:"red", fontSize: '30px'}}/>
             </div>
-            <form onSubmit={submitHandler}>
+            <form className='formContainer' style={{width:"100%"}} onSubmit={submitHandler}>
               <div className="width">
               <label className="blockLabel" htmlFor="title">title</label>
               <input className="inputDesign" type="text" value={name} 
               onChange={(e)=>setName(e.target.value)} id="title" />
               </div>
-              <CheckBox completed={completed} completedHandler={()=>setCompleted(!completed)} />
+              <CheckBox number={0} completed={completed} completedHandler={()=>setCompleted(!completed)} />
               <button type="submit"  className="button width">Edit</button>
             </form>
-
-        </div>
+            </div>
       </div>
   );
 }
