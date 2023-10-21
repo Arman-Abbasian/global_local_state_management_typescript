@@ -4,14 +4,15 @@ import RadioButtonUncheckedOutlinedIcon from '@mui/icons-material/RadioButtonUnc
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 interface IProps{
   completed:boolean
-  completedHandler:()=>void
+  completedHandler:()=>void;
+  open:boolean;
 }
-
- function CheckBox_context({completed,completedHandler}:IProps) {
+ function CheckBox_context({completed,completedHandler,open}:IProps) {
   return (
     <div>
       <Checkbox
       sx={{
+        zIndex:`${open?'-1':'0'}`,
         '&:hover': { bgcolor: 'transparent' },
       }}
         {...label}

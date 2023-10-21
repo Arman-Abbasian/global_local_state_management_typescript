@@ -26,7 +26,7 @@ const completedHandler=(id:number)=>{
         }
       
       {todos.todos.map((todo:Todo)=>(
-        <Todoo key={todo.id} todo={todo} 
+        <Todoo open={isOpen} key={todo.id} todo={todo} 
         deleteHandler={deleteHandler}
         editHandler={()=>editHandler(todo)}
         completedHandler={completedHandler} />

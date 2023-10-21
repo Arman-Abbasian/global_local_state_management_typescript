@@ -59,15 +59,14 @@ const reducer=(state:ITodo=initialState,action:Actions)=>{
             break;
             }
             case "COMPLETE_TODO":{
-            const {todos:modifedTodos}={...state};
-            const findedTodoIndex:number | undefined=modifedTodos.findIndex((todo:Todo)=>todo.id===action.payload);
-            if(findedTodoIndex>=0){
-                modifedTodos[findedTodoIndex].completed=!modifedTodos[findedTodoIndex].completed
-            console.log( modifedTodos[findedTodoIndex].completed)
-            console.log(modifedTodos)
-            }
-            return {...state,todos:modifedTodos}
-            break;
+                const {todos}={...state};
+                const findedTodo:Todo | undefined=todos.find((todo:Todo)=>todo.id===action.payload);
+                if(findedTodo){
+                findedTodo.completed=! findedTodo.completed
+                console.log(findedTodo)
+                }
+                return {...state,todos}
+                break;
             }
             case "DELETE_TODO":{
                 const {todos}={...state};

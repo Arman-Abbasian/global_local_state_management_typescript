@@ -3,6 +3,7 @@ import { useState} from 'react';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Todo } from '../../redux/todos/todosReducer';
 import { useTodos } from '../../context/todos/todosContext';
+import { useTheme } from '../../context/theme/themeContext';
 
 interface IProps{
   todo:Todo,
@@ -15,6 +16,7 @@ function ModalC_context({open,setIsOpen,todo,setSelectedTodo}:IProps) {
   const [name,setName]=useState<string>(todo.name)
   const [completed,setCompleted]=useState<boolean>(todo.completed)
   const {todosDispatch}=useTodos();
+  const {theme}=useTheme();
   const submitHandler=(e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
     todosDispatch({type:"EDIT_TODO",payload:{id:todo.id,name,completed}})
@@ -27,20 +29,21 @@ function ModalC_context({open,setIsOpen,todo,setSelectedTodo}:IProps) {
   }
   return (
       <div className={`modalContainer ${!open && 'closeModal' }`}>
-        <div className='modalContent'>
+        <div className={`modalContent ${theme.theme==="dark"?'darkTheme':'lightTheme'}`}>
             <div className='spaceBetween'>
             <h2 style={{textAlign:"center"}}>Edit Todo</h2>
-            <AiOutlineCloseCircle 
+            <AiOutlineCloseCircle
+            className="icon" 
             onClick={closeHandler} 
             style={{color:"red", fontSize: '30px'}}/>
             </div>
-            <form onSubmit={submitHandler}>
+            <form className='formContainer' style={{width:"100%"}} onSubmit={submitHandler}>
               <div className="width">
               <label className="blockLabel" htmlFor="title">title</label>
               <input className="inputDesign" type="text" value={name} 
               onChange={(e)=>setName(e.target.value)} id="title" />
               </div>
-              <CheckBox completed={completed} completedHandler={()=>setCompleted(!completed)} />
+              <CheckBox open={false} completed={completed} completedHandler={()=>setCompleted(!completed)} />
               <button type="submit"  className="button width">Edit</button>
             </form>
         </div>
