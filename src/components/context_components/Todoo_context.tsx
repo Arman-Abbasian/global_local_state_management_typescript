@@ -17,8 +17,8 @@ function Todoo_context({todo,deleteHandler,editHandler,completedHandler}:IProps)
       </div>
       <div className="todoContainer_icons">
         <CheckBox completed={todo.completed} completedHandler={()=>completedHandler(todo.id)} />
-        <AiOutlineEdit onClick={()=>editHandler(todo.id)}  className="todoContainer_icons_edit" />
-        <AiOutlineDelete onClick={()=>deleteHandler(todo.id)} className="todoContainer_icons_delete"/>
+        <AiOutlineEdit  onClick={()=>editHandler(todo.id)}  className="todoContainer_icons_edit icon" />
+        <AiOutlineDelete onClick={()=>deleteHandler(todo.id)} className="todoContainer_icons_delete icon"/>
       </div>
     </div>
   )

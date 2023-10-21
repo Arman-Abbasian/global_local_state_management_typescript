@@ -8,7 +8,6 @@ function AddTodo_context() {
   const [name,setName]=useState<string>("");
   const {todosDispatch}=useTodos();
   const {theme,themeDispatch}=useTheme();
-  console.log(theme)
   if(theme.theme==="dark"){
     document.body.classList.remove('lightTheme')
     document.body.classList.add('darkTheme')
@@ -33,7 +32,8 @@ const changeThemeHandler=()=>{
   return (
     <div>
       <div className="theme" onClick={changeThemeHandler}>{theme.theme==="dark"?
-      <MdOutlineLightMode className="icon"/>:<MdOutlineDarkMode className="icon"/>}</div>
+      <MdOutlineLightMode className="icon"/>:<MdOutlineDarkMode className="icon"/>}
+      </div>
       <form className="formContainer" onSubmit={submitHandler}>
         <div className="width">
         <label className="blockLabel" htmlFor="title">title</label>
