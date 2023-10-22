@@ -6,11 +6,11 @@ interface ChildrenProps {
 }
 
 
-const ContextProvider=({children}:ChildrenProps)=>{
-<TodosContextProvider>
-    <ThemeContextProvider>
-        {children}
-    </ThemeContextProvider>
-</TodosContextProvider>
+const ContextProvider=({children}:ChildrenProps):React.ReactNode=>{
+    return <TodosContextProvider>
+                <ThemeContextProvider>
+                    {children}
+                </ThemeContextProvider>
+            </TodosContextProvider>;
 }
 export default ContextProvider;

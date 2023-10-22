@@ -1,7 +1,6 @@
-import TodosContextProvider from "./context/todos/todosContext"
-import ThemeContextProvider from "./context/theme/themeContext"
 import AddTodo_context from "./components/context_components/AddTodo_context"
 import Todos_context from "./components/context_components/Todos_context"
+import ContextProvider from "./components/context_components/ContextProvider"
 
 
 
@@ -9,12 +8,11 @@ import Todos_context from "./components/context_components/Todos_context"
 
 function App() {
   return (      
-        <TodosContextProvider>
-          <ThemeContextProvider>
-            <AddTodo_context />
-            <Todos_context />
-            </ThemeContextProvider>
-        </TodosContextProvider>
+        <ContextProvider>
+          <AddTodo_context />
+          <Todos_context />
+        </ContextProvider>
+           
         // <Provider store={store}>
         //   <AddTodo_redux />
         //   <Todos_reudx />
