@@ -5,14 +5,14 @@ import { Todo } from '../../redux/todos/todosReducer';
 import { useTodos } from '../../context/todos/todosContext';
 import { useTheme } from '../../context/theme/themeContext';
 
-interface IProps{
+interface IModal_contextProps{
   todo:Todo,
   open:boolean,
   setSelectedTodo:React.Dispatch<React.SetStateAction<Todo | null>>
   setIsOpen:React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function ModalC_context({open,setIsOpen,todo,setSelectedTodo}:IProps) {
+function ModalC_context({open,setIsOpen,todo,setSelectedTodo}:IModal_contextProps) {
   const [name,setName]=useState<string>(todo.name)
   const [completed,setCompleted]=useState<boolean>(todo.completed)
   const {todosDispatch}=useTodos();

@@ -2,7 +2,7 @@ import { AiOutlineEdit,AiOutlineDelete } from "react-icons/ai";
 import { Todo } from "../../features/todos/todosSlice";
 import CheckBox from "./CheckBox_context";
 
-interface IProps{
+interface ITodoo_contextProps{
   todo:Todo;
   editHandler:(id:number)=>void;
   deleteHandler:(id:number)=>void;
@@ -10,7 +10,7 @@ interface IProps{
   open:boolean;
 }
 
-function Todoo_context({todo,deleteHandler,editHandler,completedHandler,open}:IProps) {
+function Todoo_context({todo,deleteHandler,editHandler,completedHandler,open}:ITodoo_contextProps) {
   return (
     <div className="todoContainer">
       <div className="todoContainer_title">

@@ -2,12 +2,12 @@ import Checkbox from '@mui/material/Checkbox';
 import TaskAltOutlinedIcon from '@mui/icons-material/TaskAltOutlined';
 import RadioButtonUncheckedOutlinedIcon from '@mui/icons-material/RadioButtonUncheckedOutlined';
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-interface IProps{
+interface ICheckBox_contextProps{
   completed:boolean
   completedHandler:()=>void;
   open:boolean;
 }
- function CheckBox_context({completed,completedHandler,open}:IProps) {
+ function CheckBox_context({completed,completedHandler,open}:ICheckBox_contextProps) {
   return (
     <div>
       <Checkbox

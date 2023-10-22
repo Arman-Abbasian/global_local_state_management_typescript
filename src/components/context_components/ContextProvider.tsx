@@ -1,12 +1,12 @@
 import ThemeContextProvider from "../../context/theme/themeContext";
 import TodosContextProvider from "../../context/todos/todosContext";
 
-interface ChildrenProps {
+interface IContextProviderProps {
     children: React.ReactNode;
 }
 
 
-const ContextProvider=({children}:ChildrenProps):React.ReactNode=>{
+const ContextProvider=({children}:IContextProviderProps):React.ReactNode=>{
     return <TodosContextProvider>
                 <ThemeContextProvider>
                     {children}
