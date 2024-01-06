@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import themeSlice from "./theme/themeSlice";
-import todosSlice from "./todos/todosSlice";
+
 
 
 const store = configureStore({
